@@ -1,0 +1,22 @@
+{% extends 'home/base.html' %}
+{%block content%}
+    <div class="grid">
+        <h1>Bienvenido {{user.username}}</h1>
+        <h3 class="card-title mt-4">Mostrando usuarios</h3>
+        <div class="row">
+            {% for user in lista_usuario %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    {% load static %}
+                    <img class="card-img-top" src="{% static 'img/usuario.jpg' %}" alt="Card image">
+                    <div class="card-body">
+                        <h5 class="card-title">Datos del Usuario</h5>
+                        <p class="card-text"><strong>Nombre de Usuario</strong> {{ user.username }}</p>
+                        <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content%}

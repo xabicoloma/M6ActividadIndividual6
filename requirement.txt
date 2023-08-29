@@ -1,0 +1,8 @@
+asgiref==3.7.2
+defusedxml==0.7.1
+Django==4.2.4
+filetype==1.2.0
+Pillow==10.0.0
+sqlparse==0.4.4
+tzdata==2023.3
+Willow==1.6.1
