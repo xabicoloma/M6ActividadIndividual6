@@ -6,9 +6,8 @@ from django.contrib.auth.models import User
 class RegistroUsuarioForm(UserCreationForm):
     email = forms.EmailField(required=False)
     campos = (
-        ('admin', 'Administrador'),
-        ('usuario_comun', 'Usuario comun'),
-        ('permission_manger', 'Moderador de permisos')
+        ('usuario_comun', 'Usuario'),
+        ('permission_manger', 'Taller')
     )
     tipo_usuario = forms.ChoiceField(choices=campos)
     

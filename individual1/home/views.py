@@ -41,9 +41,7 @@ def registro(request):
                 user = formulario_p.save(commit=False)
                 # Asegurarse de que la contraseña se encripte utilizando el método save() personalizado
                 grupo_seleccionado = formulario_p.cleaned_data['tipo_usuario']
-                if grupo_seleccionado == 'admin':
-                    grupo = Group.objects.filter(name='admin').first()
-                elif grupo_seleccionado == 'usuario_comun':
+                if grupo_seleccionado == 'usuario_comun':
                     grupo = Group.objects.filter(name='usuario_comun').first()
                 elif grupo_seleccionado == 'permission_manger':
                     grupo = Group.objects.filter(name='permission_manger').first()
