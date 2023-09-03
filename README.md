@@ -6,3 +6,5 @@ En el caso de que el usuario sea tipo admin, redirije al admin del sitio y para 
 
 La pagina corresponde a una pagina de gestion de vehiculos, donde los usuarios podran ingresar sus vehiculos personales y gestionarlos para realizar mantenciones, comprar repuestos, venderlos y poder interactuar con otros usuarios.
 La pagina de moment permite crear usuarios y acceder a un home que muestra de momento las tarjetas que posteriormente seran las funciones de la pagina.
+
+Se agrega toda la logica de un CRUD para la seccion blog, y se crean los grupos de usuarios y de colaboradores, donde el grupo de colaboradores tiene los permisos de staff, lo que les permite borrar post en blog.
