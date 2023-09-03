@@ -1,5 +1,5 @@
-# M6ActividadIndividual5
-M6ActividadIndividual5
+# M6ActividadIndividual6
+M6ActividadIndividual6
 
 Las restricciones responden al minuto en que el usuario se logea como admin o como usuario staff, en el home para cada tipo de usuario se mostrara una tarjeta extra para poder acceder a una pagina especial.
 En el caso de que el usuario sea tipo admin, redirije al admin del sitio y para usuario staff muestra a todos los usuarios creados.
