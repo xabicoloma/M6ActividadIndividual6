@@ -1,0 +1,66 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <section class="section-content py-3">
+        <div class="row">
+            <aside class="col-lg-3">
+                <!-- Sidebar content -->
+                <nav class="sidebar card py-2">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'crear_posteo' %}">Crear Posteo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'blog' %}">Posteos</a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+            <div class="col-lg-9">
+                <!-- Blog posts -->
+                {% for post in context %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ post.title }}</h2>
+                        <h6>{{ post.author }}</h6>
+                        <p class="card-text">{{ post.content }}</p>
+                        <h3>Comentarios</h3>
+                        <ul>
+                            {% for comment in post.comment_set.all %}
+                                <li><strong>{{ comment.author_name }}:</strong> {{ comment.text }}</li>
+                            {% empty %}
+                                <li>No hay comentarios.</li>
+                            {% endfor %}
+                        </ul>
+                        <!-- Formulario de Comentarios -->
+                        <a class="btn btn-success mb-2" href="{% url 'modificar_posteo' post.id %}">Modificar</a>
+                        <form method="post" action="{% url 'new_status' post.id %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="author_name">Nombre:</label>
+                                <input type="text" id="author_name" name="author_name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="comment_text">Comentario:</label>
+                                <textarea id="comment_text" name="comment_text" class="form-control"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar Comentario</button>
+                        </form>
+                        {% if user.is_staff or user.is_superuser %}
+                        <form method="post" action="{% url 'eliminar_posteo' post.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}
